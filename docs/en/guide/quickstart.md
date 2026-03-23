@@ -1,6 +1,6 @@
 # Quickstart
 
-This quickstart targets the current repository at `/Users/kityeung/Documents/workspace/virtual-log-trace` and focuses on the shortest path to run the backend, ingest sample logs, and open the frontend workbench.
+This quickstart targets the current repository at `/path/to/virtual-log-trace` and focuses on the shortest path to run the backend, ingest sample logs, and open the frontend workbench.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ The repository already includes generated files under `gen/go/**`, so you do not
 From the `virtual-log-trace` repository root:
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace
+cd /path/to/virtual-log-trace
 export VLT_INGEST_TOKENS='dev-token=demo|sandbox'
 go run ./cmd/vlt-server
 ```
@@ -80,7 +80,7 @@ You should see `count` and `logs`.
 ## 4. Start the frontend
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace/web
+cd /path/to/virtual-log-trace/web
 npm install
 npm run dev
 ```
@@ -92,7 +92,7 @@ The frontend defaults to `http://localhost:8080`.
 To run the backend, wait for health checks, ingest all samples, and start the frontend in one flow:
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace
+cd /path/to/virtual-log-trace
 ./scripts/dev-preview.sh
 ```
 
@@ -107,7 +107,7 @@ make preview
 Only regenerate code after editing `proto/**`:
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace
+cd /path/to/virtual-log-trace
 go mod tidy
 brew install protobuf
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest

@@ -1,6 +1,6 @@
 # 快速开始
 
-这份快速开始以当前仓库 `/Users/kityeung/Documents/workspace/virtual-log-trace` 为准，目标是在最短路径内跑通后端、发送示例日志，并打开前端工作台。
+这份快速开始以当前仓库 `/path/to/virtual-log-trace` 为准，目标是在最短路径内跑通后端、发送示例日志，并打开前端工作台。
 
 ## 前置条件
 
@@ -21,7 +21,7 @@
 在 `virtual-log-trace` 根目录执行：
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace
+cd /path/to/virtual-log-trace
 export VLT_INGEST_TOKENS='dev-token=demo|sandbox'
 go run ./cmd/vlt-server
 ```
@@ -80,7 +80,7 @@ curl "http://localhost:8080/v1/logs/search?project=demo&environment=dev"
 ## 4. 启动前端
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace/web
+cd /path/to/virtual-log-trace/web
 npm install
 npm run dev
 ```
@@ -99,7 +99,7 @@ npm run dev
 可以直接执行：
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace
+cd /path/to/virtual-log-trace
 ./scripts/dev-preview.sh
 ```
 
@@ -114,7 +114,7 @@ make preview
 只有在你改动 `proto/**` 后，才需要重新生成代码：
 
 ```bash
-cd /Users/kityeung/Documents/workspace/virtual-log-trace
+cd /path/to/virtual-log-trace
 go mod tidy
 brew install protobuf
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest

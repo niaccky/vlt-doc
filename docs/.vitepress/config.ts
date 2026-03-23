@@ -1,5 +1,18 @@
 import { defineConfig } from "vitepress";
 
+const normalizeBase = (value?: string) => {
+  if (!value || value === "/") {
+    return "/";
+  }
+
+  const trimmed = value.replace(/^\/+|\/+$/g, "");
+  return `/${trimmed}/`;
+};
+
+const siteBase = normalizeBase(process.env.VITEPRESS_BASE);
+const withSiteBase = (path: string) =>
+  siteBase === "/" ? `/${path.replace(/^\/+/, "")}` : `${siteBase}${path.replace(/^\/+/, "")}`;
+
 const zhNav = [
   { text: "首页", link: "/" },
   { text: "Guide", link: "/guide/quickstart" },
@@ -101,11 +114,12 @@ const enSidebar = [
 ];
 
 export default defineConfig({
+  base: siteBase,
   title: "Virtual Log Trace",
   description: "Protocol-first visual log tracing reference implementation.",
   lastUpdated: true,
   head: [
-    ["link", { rel: "icon", href: "/favicon.svg" }],
+    ["link", { rel: "icon", href: withSiteBase("favicon.svg") }],
     ["meta", { name: "theme-color", content: "#0f1519" }],
   ],
   themeConfig: {

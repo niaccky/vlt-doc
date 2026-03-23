@@ -11,11 +11,6 @@
 - 归一化、聚合和实现边界
 - 示例 Trace 场景
 
-## 相关仓库
-
-- 文档站仓库：`/Users/kityeung/Documents/workspace/vlt-doc`
-- 源项目仓库：`/Users/kityeung/Documents/workspace/virtual-log-trace`
-
 当前文档内容严格依据 `virtual-log-trace` 现有实现编写，不补充未实现能力。
 
 ## 技术栈
@@ -58,6 +53,18 @@ docs/.vitepress/dist
 ```bash
 npm run docs:preview
 ```
+
+## 部署到 GitHub Pages
+
+这个仓库已经补好了 `gh-pages` 部署能力：
+
+- 本地手动发布：`npm run deploy`
+- 仅按 Pages 子路径构建：`npm run docs:build:pages`
+- 推送到 `main` 后，GitHub Actions 会自动发布到 `gh-pages` 分支
+
+部署脚本会自动根据 GitHub 仓库名推导 VitePress 的 `base`。例如当前仓库会使用 `/vlt-doc/`，这样发布到 `https://<github-user>.github.io/vlt-doc/` 时静态资源路径是正确的。
+
+首次启用时，请在 GitHub 仓库的 `Settings -> Pages` 中将发布来源设置为 `Deploy from a branch`，并选择 `gh-pages` 分支的 `/ (root)`。
 
 ## 目录结构
 
@@ -110,6 +117,8 @@ docs/public/source-intelligence-preview.png
 | `npm run docs:dev` | 启动本地开发服务 |
 | `npm run docs:build` | 构建静态站点 |
 | `npm run docs:preview` | 预览构建结果 |
+| `npm run docs:build:pages` | 按 GitHub Pages 路径构建 |
+| `npm run deploy` | 构建并发布到 `gh-pages` 分支 |
 
 ## 备注
 
