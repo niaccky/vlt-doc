@@ -83,7 +83,7 @@ async function deployToGhPages(base) {
     "--",
     "gh-pages",
     "-d",
-    "docs/.vitepress/dist",
+    "docs/dist",
     "-b",
     "gh-pages",
     "--dotfiles",
@@ -99,7 +99,7 @@ async function deployToGhPages(base) {
     args.push("-u", process.env.GH_PAGES_USER);
   }
 
-  console.log("Publishing docs/.vitepress/dist to gh-pages branch...");
+  console.log("Publishing docs/dist to gh-pages branch...");
   await run(npmCommand, args);
 }
 

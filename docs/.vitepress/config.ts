@@ -115,6 +115,7 @@ const enSidebar = [
 
 export default defineConfig({
   base: siteBase,
+  outDir: "dist",
   title: "Virtual Log Trace",
   description: "Protocol-first visual log tracing reference implementation.",
   lastUpdated: true,

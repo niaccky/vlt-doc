@@ -45,7 +45,7 @@ npm run docs:build
 构建产物会输出到：
 
 ```text
-docs/.vitepress/dist
+docs/dist
 ```
 
 ## 本地预览构建结果
@@ -60,7 +60,7 @@ npm run docs:preview
 
 - 本地手动发布：`npm run deploy`
 - 仅按 Pages 子路径构建：`npm run docs:build:pages`
-- 推送到 `main` 后，GitHub Actions 会自动发布到 `gh-pages` 分支
+- 推送到 `main` 后，GitHub Actions 会自动发布 `docs/dist` 到 `gh-pages` 分支
 
 部署脚本会自动根据 GitHub 仓库名推导 VitePress 的 `base`。例如当前仓库会使用 `/vlt-doc/`，这样发布到 `https://<github-user>.github.io/vlt-doc/` 时静态资源路径是正确的。
 
@@ -118,7 +118,7 @@ docs/public/source-intelligence-preview.png
 | `npm run docs:build` | 构建静态站点 |
 | `npm run docs:preview` | 预览构建结果 |
 | `npm run docs:build:pages` | 按 GitHub Pages 路径构建 |
-| `npm run deploy` | 构建并发布到 `gh-pages` 分支 |
+| `npm run deploy` | 构建并发布 `docs/dist` 到 `gh-pages` 分支 |
 
 ## 备注
 
