@@ -26,6 +26,10 @@ features:
     details: The repository already contains the Go server, a Go sender, a React workbench UI, and multiple sample payloads.
 ---
 
+<script setup lang="ts">
+import { withBase } from "vitepress";
+</script>
+
 <div class="vlt-architecture">
   <p class="vlt-architecture__lead">
     This documentation focuses on three things: what the project is, what it can do, and which behaviors are actually implemented today.
@@ -66,15 +70,15 @@ features:
 - Anyone using the current implementation as a starting point for further product work
 
 <div class="vlt-quick-links">
-  <a href="/en/intro/what-is-vlt">
+  <a :href="withBase('/en/intro/what-is-vlt')">
     <strong>What it is</strong>
     <span>Start with project scope, problem framing, and included components.</span>
   </a>
-  <a href="/en/guide/quickstart">
+  <a :href="withBase('/en/guide/quickstart')">
     <strong>Guide</strong>
     <span>Run the backend, sender, frontend, and preview script in a few minutes.</span>
   </a>
-  <a href="/en/reference/overview">
+  <a :href="withBase('/en/reference/overview')">
     <strong>Protocol Reference</strong>
     <span>Read the exact proto, HTTP, and normalization behaviors.</span>
   </a>
@@ -88,7 +92,7 @@ features:
     </p>
     <div class="vlt-preview-grid">
       <PreviewImageCard
-        src="/logs-explorer-preview.png"
+        :src="withBase('/logs-explorer-preview.png')"
         alt="Logs Explorer page preview"
         title="Logs Explorer"
         description="Filter controls, summary cards, and a trace-openable log list in one screen. Click the image to preview it in place, then close it from the top-right corner."
@@ -96,7 +100,7 @@ features:
         preview-hint="Preview Logs Explorer image"
       />
       <PreviewImageCard
-        src="/trace-flow-workbench-preview.png"
+        :src="withBase('/trace-flow-workbench-preview.png')"
         alt="Trace flow workbench preview"
         title="Trace flow workbench"
         description="Summary, topology, timeline lanes, and inspection for one trace working together. Click the image to preview it in place, then close it from the top-right corner."
@@ -104,7 +108,7 @@ features:
         preview-hint="Preview Trace flow workbench image"
       />
       <PreviewImageCard
-        src="/source-intelligence-preview.png"
+        :src="withBase('/source-intelligence-preview.png')"
         alt="Source intelligence preview"
         title="Source intelligence"
         description="Grouped visibility into source types, logical sources, and live source instances. Click the image to preview it in place, then close it from the top-right corner."

@@ -26,6 +26,10 @@ features:
     details: 仓库同时提供 Go 服务端、Go sender、React 可视化前端和多组示例请求，方便本地直接演示。
 ---
 
+<script setup lang="ts">
+import { withBase } from "vitepress";
+</script>
+
 <div class="vlt-architecture">
   <p class="vlt-architecture__lead">
     文档聚焦三件事：它是什么、它能做什么、它当前到底实现到了哪一步。
@@ -66,15 +70,15 @@ features:
 - 想基于当前参考实现继续演化产品的人
 
 <div class="vlt-quick-links">
-  <a href="/intro/what-is-vlt">
+  <a :href="withBase('/intro/what-is-vlt')">
     <strong>它是什么</strong>
     <span>先看定位、问题边界和包含内容。</span>
   </a>
-  <a href="/guide/quickstart">
+  <a :href="withBase('/guide/quickstart')">
     <strong>Guide</strong>
     <span>5 分钟跑起后端、sender、前端和一键预览脚本。</span>
   </a>
-  <a href="/reference/overview">
+  <a :href="withBase('/reference/overview')">
     <strong>Protocol Reference</strong>
     <span>按 proto、HTTP 和归一化行为阅读完整协议。</span>
   </a>
@@ -88,7 +92,7 @@ features:
     </p>
     <div class="vlt-preview-grid">
       <PreviewImageCard
-        src="/logs-explorer-preview.png"
+        :src="withBase('/logs-explorer-preview.png')"
         alt="Logs Explorer page preview"
         title="Logs Explorer"
         description="筛选面板、统计卡片和可直接进入 Trace 的日志列表。点击图片可在当前页面预览，右上角按钮可关闭。"
@@ -96,7 +100,7 @@ features:
         preview-hint="查看 Logs Explorer 大图"
       />
       <PreviewImageCard
-        src="/trace-flow-workbench-preview.png"
+        :src="withBase('/trace-flow-workbench-preview.png')"
         alt="Trace flow workbench preview"
         title="Trace flow workbench"
         description="同一条 Trace 的摘要、拓扑、时间线泳道与检查面板联动展示。点击图片可在当前页面预览，右上角按钮可关闭。"
@@ -104,7 +108,7 @@ features:
         preview-hint="查看 Trace flow workbench 大图"
       />
       <PreviewImageCard
-        src="/source-intelligence-preview.png"
+        :src="withBase('/source-intelligence-preview.png')"
         alt="Source intelligence preview"
         title="Source intelligence"
         description="按来源类型、逻辑来源和实例维度查看当前系统的来源分布。点击图片可在当前页面预览，右上角按钮可关闭。"
