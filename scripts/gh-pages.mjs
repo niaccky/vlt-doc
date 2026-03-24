@@ -1,7 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { execFile, spawn } from "node:child_process";
+import { createRequire } from "node:module";
 import { promisify } from "node:util";
 
+const require = createRequire(import.meta.url);
+const ghPages = require("gh-pages");
 const execFileAsync = promisify(execFile);
 const packageJsonUrl = new URL("../package.json", import.meta.url);
 const packageJson = JSON.parse(await readFile(packageJsonUrl, "utf8"));
@@ -67,6 +70,19 @@ function run(command, args, env = process.env) {
   });
 }
 
+function publishGhPages(basePath, options) {
+  return new Promise((resolve, reject) => {
+    ghPages.publish(basePath, options, (error) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+
+      resolve();
+    });
+  });
+}
+
 async function buildForPages(base) {
   console.log(`Building VitePress site for GitHub Pages with base: ${base}`);
   await run(npmCommand, ["exec", "--", "vitepress", "build", "docs"], {
@@ -77,30 +93,18 @@ async function buildForPages(base) {
 
 async function deployToGhPages(base) {
   await buildForPages(base);
-
-  const args = [
-    "exec",
-    "--",
-    "gh-pages",
-    "-d",
-    "docs/dist",
-    "-b",
-    "gh-pages",
-    "--dotfiles",
-    "-m",
-    "deploy: update GitHub Pages",
-  ];
-
-  if (process.env.GH_PAGES_REPO) {
-    args.push("-r", process.env.GH_PAGES_REPO);
-  }
-
-  if (process.env.GH_PAGES_USER) {
-    args.push("-u", process.env.GH_PAGES_USER);
-  }
+  console.log("Cleaning gh-pages cache...");
+  ghPages.clean();
 
   console.log("Publishing docs/dist to gh-pages branch...");
-  await run(npmCommand, args);
+  await publishGhPages("docs/dist", {
+    branch: "gh-pages",
+    dotfiles: true,
+    message: "deploy: update GitHub Pages",
+    nojekyll: true,
+    repo: process.env.GH_PAGES_REPO,
+    user: process.env.GH_PAGES_USER,
+  });
 }
 
 const action = process.argv[2] ?? "deploy";
