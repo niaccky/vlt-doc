@@ -1,9 +1,6 @@
 name: Deploy Docs to gh-pages
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 env:
